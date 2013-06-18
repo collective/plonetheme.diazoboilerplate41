@@ -3,7 +3,9 @@
 <rules
     xmlns="http://namespaces.plone.org/diazo"
     xmlns:css="http://namespaces.plone.org/diazo/css"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    
+	 >
 
 
 
@@ -14,6 +16,31 @@
 
 
 		<merge attributes="class" css:theme="body" css:content="body" />
+
+
+		<!-- 
+			=============
+			Head Elements
+			=============
+		-->
+
+		<replace theme="/html/head/title" content="/html/head/title" />
+
+		<!-- TODO: re-implement this without namespaces -->
+		<replace theme="//diazo-meta" >
+			<xsl:element name="diazomarker:diazo-meta">
+				<xsl:copy-of select="/html/head/meta" />
+			</xsl:element>
+		</replace>
+
+		<replace theme="//diazo-script" >
+			<xsl:element name="diazomarker:diazo-script">
+				<xsl:copy-of select="/html/head/script" />
+			</xsl:element>
+		</replace>
+
+
+
 
 		<!-- 
 			=============
