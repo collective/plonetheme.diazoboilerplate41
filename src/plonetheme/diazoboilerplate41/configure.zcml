@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="plonetheme.diazoboilerplate41">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- -*- extra stuff goes here -*- -->
+  
+
+  <plone:static directory="static" type="theme" />
+
+</configure>

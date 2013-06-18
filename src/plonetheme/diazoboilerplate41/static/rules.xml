@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+
+
+	<rules css:if-content="#portal-header">
+
+
+		<theme href="content.html" />
+
+
+		<merge attributes="class" css:theme="body" css:content="body" />
+
+		<!-- 
+			=============
+			Page Elements 
+			=============
+		-->
+
+
+		<replace theme="/html/head/title" content="/html/head/title" />
+
+
+		<replace css:theme="#portal-personaltools" css:content="#portal-personaltools" />
+
+
+		<replace css:theme="#portal-searchbox" css:content="#portal-searchbox" />
+
+
+		<replace css:theme="#portlets-in-header" css:content="#portlets-in-header" />
+
+
+		<replace css:theme-children="#manageInHeaderPortletsLink" css:content=".manageInHeaderPortletsLink" />
+
+
+		<!-- Primary Navigation -->
+		<replace css:theme-children="#portal-globalnav">
+			<xsl:for-each select="//ul[@id='portal-globalnav']/li" >
+				<li><xsl:copy-of select="@*" />
+					<span class="megamenu-title"><xsl:copy-of select="a" /></span>
+					<div class="megamenu-content">
+						<span class="megamenu-blurb"><xsl:value-of select="a/@title" /></span>
+						<xsl:copy-of select="ul" />
+					</div>
+				</li>
+			</xsl:for-each>
+		</replace>
+
+
+		<replace css:theme-children="#portal-secondarynav"
+			content-children="
+				//div[@id='portal-column-one']
+				//dl[contains(@class, 'portletNavigationTree')]
+				 /dd
+				 /ul" />
+		<drop content="
+				//div[@id='portal-column-one']
+				//dl[contains(@class, 'portletNavigationTree')]" />
+
+
+
+		<replace css:theme-children="#portal-breadcrumbs"
+			content="//div[@id='portal-breadcrumbs']/span[not(@id='breadcrumbs-you-are-here')]" />
+		<drop css:content="#portal-breadcrumbs" />
+
+
+		<replace css:theme="#viewlet-above-content" css:content="#viewlet-above-content" />
+		<replace css:theme="#edit-bar" css:content="#edit-bar" />
+
+
+		<replace css:theme-children="#content-diazo-wrapper" >
+			<div id="content">
+				<xsl:choose>
+					<xsl:when test="
+								//body[contains(@class,'template-overview-controlpanel')] |
+								//dl[@id='portlet-prefs'] |
+								//body[contains(@class,'template-folder_contents')] |
+								//li[@id='contentview-edit' and @class='selected'] |
+								//li[@id='contentview-criteria' and @class='selected'] |
+								//body[contains(@class,'template-atct_edit')] |
+								//body[contains(@class,'template-manage-portlets')] |
+								//body[contains(@class,'template-sendto_form')] |
+								//body[contains(@class,'template-search_form')] |
+								//body[contains(@class, 'template-edit')]
+								
+						">
+						<div id="content-plone" class="plonestyle plonestyle-content">
+							<div id="content-plonestyle">
+								<xsl:apply-templates select="//div[@id='content']" />
+							</div>
+						</div>
+					</xsl:when>
+					<xsl:otherwise>
+						<div id="content-plone">
+							<xsl:apply-templates select="//div[@id='content']" />
+						</div>
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
+		</replace>
+
+
+		<replace css:theme-children="#last_updated-date" css:content-children="#viewlet-below-content .last_updated-date" />
+		<drop css:content-children="#viewlet-below-content .last_updated" />
+
+
+		<replace css:theme="#viewlet-below-content" css:content="#viewlet-below-content" />
+
+
+
+
+
+		<!-- 
+			=============
+			Accessability 
+			=============
+		-->
+		<replace content="//b"><strong><xsl:copy-of select="node()"/></strong></replace>
+		<replace content="//i"><em><xsl:copy-of select="node()"/></em></replace>
+
+
+
+
+		<!-- 
+			==========================
+			Wrap Things in Plone Style 
+			==========================
+		-->
+
+		<replace css:content=".managePortletsAboveLink">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+		<replace css:content=".managePortletsBelowLink">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+		<replace css:content="table.listing">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+		<replace css:content=".portlets-manager">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+		<replace css:content="#LSResult">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+		<replace css:content=".pfg-form">
+			<div class="plonestyle">
+				<xsl:copy-of select="." />
+			</div>
+		</replace>
+
+
+	</rules>
+
+</rules>
