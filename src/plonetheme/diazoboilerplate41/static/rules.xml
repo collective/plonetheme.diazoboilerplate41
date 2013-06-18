@@ -26,19 +26,21 @@
 
         <replace theme="/html/head/title" content="/html/head/title" />
 
-        <!-- replace between -diazo-meta... -->
+        <!-- replace between -diazo-meta-... -->
         <drop theme="
             /html/head/*[
                 preceding-sibling::meta[@name='-diazo-meta-start'] and
                 following-sibling::meta[@name='-diazo-meta-end'] ]" />
-        <after theme="/html/head/meta[@name='-diazo-meta-start']" content="/html/head/meta" />
+        <after theme="/html/head/meta[@name='-diazo-meta-start']"
+            content="/html/head/meta[@name != 'viewport']" /> <!-- you probably don't want viewport from plone -->
 
-        <!-- replace between -diazo-script... -->
+        <!-- replace between -diazo-script-... -->
         <drop theme="
             /html/head/*[
                 preceding-sibling::meta[@name='-diazo-script-start'] and
                 following-sibling::meta[@name='-diazo-script-end'] ]" />
-        <after theme="/html/head/meta[@name='-diazo-script-start']" content="/html/head/script" />
+        <after theme="/html/head/meta[@name='-diazo-script-start']"
+            content="/html/head/script" />
 
 
 
