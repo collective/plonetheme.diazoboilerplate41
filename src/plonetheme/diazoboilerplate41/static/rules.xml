@@ -13,13 +13,28 @@
 
 
         <theme href="boilerplate-base.html" />
-
-        <!-- from the above base  -->
-
         <!-- <theme href="content.html" /> -->
 
+        <!-- 
+            What to do:
+            1. Create example content in Plone
+            2. Enable this theme
+            3. File->Save Page As  (do not do 'web page compleate')
+            4. Edit the saved page...
+                a) remove the absolute part of resources which you reference
+                   inside this theme - which at this point is only:
+    /Plone/++theme++plonetheme.diazoboilerplate41/css/plonestyle-public.css
+                   becomes:
+                   css/plonestyle-public.css
+                b) remove the /html/head/base element which should be at the top
+                c) move the <meta name='Content-Type'.. element under the 
+                   -diazo-meta-start marker
+                d) it mithgt be useful to put the page through a pretty print
+            5. Save this page into the theme directory eg content.html
+            6. Disable the boilerplate-base.html theme above and enable the 
+               content.html theme
+        -->
 
-        <!-- <theme href="example-theme-me.html" /> -->
 
 
         <merge attributes="class" css:theme="body" css:content="body" />
