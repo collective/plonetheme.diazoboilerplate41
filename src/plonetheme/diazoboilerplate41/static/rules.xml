@@ -27,9 +27,8 @@
                    becomes:
                    css/plonestyle-public.css
                 b) remove the /html/head/base element which should be at the top
-                c) move the <meta name='Content-Type'.. element under the 
-                   -diazo-meta-start marker
-                d) it mithgt be useful to put the page through a pretty print
+                c) it mithgt be useful to put the page through some kind of
+                   "pretty print"
             5. Save this page into the theme directory eg content.html
             6. Disable the boilerplate-base.html theme above and enable the 
                content.html theme
