@@ -43,6 +43,11 @@
             content="/html/head/script" />
 
 
+        <!--
+            NOTE: this theme does not pull in styles from Plone because it is 
+            too risky - styles are to be managed in the css directory in 
+            this theme
+        -->
 
 
 
