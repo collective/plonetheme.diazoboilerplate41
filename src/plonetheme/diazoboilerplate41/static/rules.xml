@@ -26,18 +26,20 @@
 
         <replace theme="/html/head/title" content="/html/head/title" />
 
-        <!-- TODO: re-implement this without namespaces -->
-        <replace theme="//diazo-meta" >
-            <xsl:element name="diazomarker:diazo-meta">
-                <xsl:copy-of select="/html/head/meta" />
-            </xsl:element>
-        </replace>
+        <!-- replace between -diazo-meta... -->
+        <drop theme="
+            /html/head/*[
+                preceding-sibling::meta[@name='-diazo-meta-start'] and
+                following-sibling::meta[@name='-diazo-meta-end'] ]" />
+        <after theme="/html/head/meta[@name='-diazo-meta-start']" content="/html/head/meta" />
 
-        <replace theme="//diazo-script" >
-            <xsl:element name="diazomarker:diazo-script">
-                <xsl:copy-of select="/html/head/script" />
-            </xsl:element>
-        </replace>
+        <!-- replace between -diazo-script... -->
+        <drop theme="
+            /html/head/*[
+                preceding-sibling::meta[@name='-diazo-script-start'] and
+                following-sibling::meta[@name='-diazo-script-end'] ]" />
+        <after theme="/html/head/meta[@name='-diazo-script-start']" content="/html/head/script" />
+
 
 
 
