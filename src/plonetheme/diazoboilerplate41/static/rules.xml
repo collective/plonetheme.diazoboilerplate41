@@ -12,6 +12,7 @@
     <rules css:if-content="#portal-header">
 
 
+        <!-- <theme href="round-trip-test.html" /> -->
         <theme href="content.html" />
 
 
@@ -136,6 +137,15 @@
         <replace css:theme="#viewlet-below-content" css:content="#viewlet-below-content" />
 
 
+        <replace css:theme="#portal-column-one" css:content="#portal-column-one" />
+
+
+        <replace css:theme="#portal-column-two" css:content="#portal-column-two" />
+
+
+        <replace css:theme="#portlets-footer" css:content="#portlets-footer" />
+        <replace css:theme-children="#diazo-manage-footer-portlets-wrapper" css:content=".manageFooterPortletsLink" />
+
 
 
 
@@ -166,6 +176,7 @@
                 <xsl:copy-of select="." />
             </div>
         </replace>
+
         <replace css:content="table.listing">
             <div class="plonestyle">
                 <xsl:copy-of select="." />
