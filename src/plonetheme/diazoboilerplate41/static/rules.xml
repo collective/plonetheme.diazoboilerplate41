@@ -33,7 +33,8 @@
                 preceding-sibling::meta[@name='-diazo-meta-start'] and
                 following-sibling::meta[@name='-diazo-meta-end'] ]" />
         <after theme="/html/head/meta[@name='-diazo-meta-start']"
-            content="/html/head/meta[@name != 'viewport']" /> <!-- you probably don't want viewport from plone -->
+            content="/html/head/meta[@name != 'viewport']" /> 
+            <!-- you probably don't want viewport from plone -->
 
         <!-- replace between -diazo-script-... -->
         <drop theme="
@@ -130,7 +131,8 @@
         </replace>
 
 
-        <replace css:theme-children="#last_updated-date" css:content-children="#viewlet-below-content .last_updated-date" />
+        <replace css:theme-children="#last_updated-date"
+            css:content-children="#viewlet-below-content .last_updated-date" />
         <drop css:content-children="#viewlet-below-content .last_updated" />
 
 
@@ -144,8 +146,11 @@
 
 
         <replace css:theme="#portlets-footer" css:content="#portlets-footer" />
-        <replace css:theme-children="#diazo-manage-footer-portlets-wrapper" css:content=".manageFooterPortletsLink" />
+        <replace css:theme-children="#diazo-manage-footer-portlets-wrapper"
+            css:content=".manageFooterPortletsLink" />
 
+
+        <replace css:theme="#portal-siteactions" css:content="#ortal-siteactions" />
 
 
 
@@ -176,7 +181,6 @@
                 <xsl:copy-of select="." />
             </div>
         </replace>
-
         <replace css:content="table.listing">
             <div class="plonestyle">
                 <xsl:copy-of select="." />
